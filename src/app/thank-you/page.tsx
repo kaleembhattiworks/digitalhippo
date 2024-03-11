@@ -8,6 +8,7 @@ import { PRODUCT_CATEGORIES } from '@/config';
 import { formatPrice } from '@/lib/utils';
 import Link from 'next/link';
 import PaymentStatus from '@/components/PaymentStatus';
+import { Loader2 } from 'lucide-react';
 // import PaymentStatus from '@/components/PaymentStatus';
 
 interface PageProps {
@@ -50,8 +51,6 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
 	const orderTotal = products.reduce((total, product) => {
 		return total + product.price;
 	}, 0);
-
-	// Set the payment status to true after 2 seconds
 
 	return (
 		<main className="relative lg:min-h-full">
@@ -129,7 +128,9 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
 													>
 														Download asset
 													</a>
-												) : null}
+												) : (
+													<Loader2 className="w-4 h-4 animate-spin text-blue-500 mr-1.5" />
+												)}
 											</div>
 
 											<p className="flex-none font-medium text-gray-900">
@@ -161,6 +162,7 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
 								isPaid={order._isPaid}
 								orderEmail={(order.user as User).email}
 								orderId={order.id}
+								user={user}
 							/>
 
 							<div className="mt-16 border-t border-gray-200 py-6 text-right">

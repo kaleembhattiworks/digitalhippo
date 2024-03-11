@@ -1,21 +1,34 @@
 'use client';
 
-import { buttonVariants } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { trpc } from '@/trpc/client';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-export default function Paynow({ orderId }: { orderId: string }) {
-	const [isLoading, setIsLoading] = useState<boolean>(false);
+export default function Paynow({ orderId, userId }: { orderId: string; userId: string }) {
+	let isLoading;
+
+	const router = useRouter();
 
 	function handleClick() {
-		setIsLoading(true);
+		isLoading = true;
+		router.push(`/thank-you?orderId=${orderId}`);
+		router.refresh();
 	}
 
 	return (
-		<Link href={`/thank-you?orderId=${orderId}`} onClick={handleClick} className={buttonVariants()}>
+		<Button
+			className={cn('w-full', {
+				'pointer-events-none opacity-50': isLoading,
+			})}
+			onClick={handleClick}
+			size={'lg'}
+		>
 			{isLoading ? <Loader2 className="w-4 h-4 animate-spin mr-1.5" /> : null}
 			{isLoading ? 'Paying' : 'Pay Now'}
-		</Link>
+		</Button>
 	);
 }

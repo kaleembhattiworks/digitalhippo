@@ -2,6 +2,8 @@ import { buttonVariants } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import Paynow from './Paynow';
+import { cookies } from 'next/headers';
+import { getServerSideUser } from '@/lib/payload-utils';
 
 interface PageProps {
 	params: {
@@ -9,8 +11,11 @@ interface PageProps {
 	};
 }
 
-export default function Page({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
 	const { orderId } = params;
+	const nextCookies = cookies();
+
+	const { user } = await getServerSideUser(nextCookies);
 
 	return (
 		<main className="relative lg:min-h-full">
@@ -36,7 +41,7 @@ export default function Page({ params }: PageProps) {
 							</Link>
 						</p>
 						<Separator className="bg-blue-500 h-0.5" />
-						<Paynow orderId={orderId} />
+						{user?.id && <Paynow orderId={orderId} userId={user?.id} />}
 					</div>
 				</div>
 			</div>

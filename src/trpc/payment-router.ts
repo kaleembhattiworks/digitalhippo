@@ -39,7 +39,7 @@ export const paymentRouter = router({
 			const order = await payload.create({
 				collection: 'orders',
 				data: {
-					_isPaid: false,
+					_isPaid: true,
 					products: products.map((prod) => prod.id),
 					user: user.id,
 				},
@@ -79,44 +79,44 @@ export const paymentRouter = router({
 	resolvePayment: privateProcedure
 		.input(z.object({ orderId: z.string(), userId: z.string() }))
 		.query(async ({ input }) => {
-			const { orderId, userId } = input;
-			const payload = await getPayloadClient();
-
-			// User check
-
-			const { docs: users } = await payload.find({
-				collection: 'users',
-				where: {
-					id: {
-						equals: userId,
-					},
-				},
-			});
-
-			const [user] = users;
-
-			if (!user) throw new TRPCError({ code: 'NOT_FOUND' });
-
-			// Order check and change _isPaid
-
-			const { docs: orders } = await payload.update({
-				collection: 'orders',
-				data: {
-					_isPaid: true,
-				},
-				where: {
-					id: {
-						equals: orderId,
-					},
-				},
-			});
-
-			const [order] = orders;
-
-			if (!order) throw new TRPCError({ code: 'NOT_FOUND' });
-
-			// send receipt
 			try {
+				const { orderId, userId } = input;
+				const payload = await getPayloadClient();
+
+				// User check
+
+				const { docs: users } = await payload.find({
+					collection: 'users',
+					where: {
+						id: {
+							equals: userId,
+						},
+					},
+				});
+
+				const [user] = users;
+
+				if (!user) throw new TRPCError({ code: 'NOT_FOUND' });
+
+				// Order check and change _isPaid
+
+				const { docs: orders } = await payload.update({
+					collection: 'orders',
+					data: {
+						_isPaid: true,
+					},
+					where: {
+						id: {
+							equals: orderId,
+						},
+					},
+				});
+
+				const [order] = orders;
+
+				if (!order) throw new TRPCError({ code: 'NOT_FOUND' });
+
+				// send receipt
 				const data = await resend.emails.send({
 					from: process.env.RESEND_DOMAIN!,
 					to: [user.email],
@@ -128,8 +128,10 @@ export const paymentRouter = router({
 						products: order.products as Product[],
 					}),
 				});
-			} catch (error) {}
 
-			return;
+				return { success: true };
+			} catch (error) {
+				return { success: false };
+			}
 		}),
 });

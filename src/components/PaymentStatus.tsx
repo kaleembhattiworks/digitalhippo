@@ -1,6 +1,7 @@
 'use client';
 
 import { useCart } from '@/hooks/use-cart';
+import { User } from '../payload-types';
 import { trpc } from '@/trpc/client';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -9,9 +10,10 @@ interface PaymentStatusProps {
 	orderEmail: string;
 	orderId: string;
 	isPaid: boolean;
+	user: User;
 }
 
-const PaymentStatus = ({ orderEmail, orderId, isPaid }: PaymentStatusProps) => {
+const PaymentStatus = ({ orderEmail, orderId, isPaid, user }: PaymentStatusProps) => {
 	const router = useRouter();
 
 	const { clearCart } = useCart();

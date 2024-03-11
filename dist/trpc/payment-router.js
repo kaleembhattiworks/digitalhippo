@@ -82,7 +82,7 @@ exports.paymentRouter = (0, trpc_1.router)({
                     return [4 /*yield*/, payload.create({
                             collection: 'orders',
                             data: {
-                                _isPaid: false,
+                                _isPaid: true,
                                 products: products.map(function (prod) { return prod.id; }),
                                 user: user.id,
                             },
@@ -137,6 +137,7 @@ exports.paymentRouter = (0, trpc_1.router)({
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0:
+                    _c.trys.push([0, 5, , 6]);
                     orderId = input.orderId, userId = input.userId;
                     return [4 /*yield*/, (0, get_payload_1.getPayloadClient)()];
                 case 1:
@@ -170,9 +171,6 @@ exports.paymentRouter = (0, trpc_1.router)({
                     order = orders[0];
                     if (!order)
                         throw new server_1.TRPCError({ code: 'NOT_FOUND' });
-                    _c.label = 4;
-                case 4:
-                    _c.trys.push([4, 6, , 7]);
                     return [4 /*yield*/, resend.emails.send({
                             from: process.env.RESEND_DOMAIN,
                             to: [user.email],
@@ -184,13 +182,13 @@ exports.paymentRouter = (0, trpc_1.router)({
                                 products: order.products,
                             }),
                         })];
-                case 5:
+                case 4:
                     data = _c.sent();
-                    return [3 /*break*/, 7];
-                case 6:
+                    return [2 /*return*/, { success: true }];
+                case 5:
                     error_1 = _c.sent();
-                    return [3 /*break*/, 7];
-                case 7: return [2 /*return*/];
+                    return [2 /*return*/, { success: false }];
+                case 6: return [2 /*return*/];
             }
         });
     }); }),
