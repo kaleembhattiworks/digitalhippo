@@ -80,17 +80,20 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
 				slidesPerView={1}
 				className="h-full w-full"
 			>
-				{urls.map((url, i) => (
-					<SwiperSlide key={i} className="-z-10 relative h-full w-full">
-						<Image
-							fill
-							loading="eager"
-							className="-z-10 h-full w-full object-cover object-center"
-							src={url}
-							alt="Product image"
-						/>
-					</SwiperSlide>
-				))}
+				{urls.map((url, i) => {
+					console.log('TEST >>>>>>>>>>', url);
+					return (
+						<SwiperSlide key={i} className="-z-10 relative h-full w-full">
+							<Image
+								fill
+								loading="eager"
+								className="-z-10 h-full w-full object-cover object-center"
+								src={url}
+								alt="Product image"
+							/>
+						</SwiperSlide>
+					);
+				})}
 			</Swiper>
 		</div>
 	);
