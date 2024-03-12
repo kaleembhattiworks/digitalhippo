@@ -1,24 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DigitalHippo - A Modern Fullstack E-Commerce Marketplace for Digital Products
 
-## Getting Started
+# DigitalHippo - A Modern Fullstack E-Commerce Marketplace for Digital Products
 
-First, run the development server:
+![Project Image](https://github.com/kaleembhattiworks/digitalhippo/blob/master/public/thumbnail.jpg)
+
+Built with the Next.js 14 App Router, tRPC, TypeScript, Payload & Tailwind
+
+## Getting started
+
+To get started with this project, run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/kaleembhattiworks/digitalhippo.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+and copy the .env.example variables into a separate .env file, fill them out & and that's all you need to get started!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- 🛠️ Complete marketplace built from scratch in Next.js 14
+- 💻 Beautiful landing page & product pages included
+- 🎨 Custom artwork included
+- 💳 Full admin dashboard
+- 🛍️ Users can purchase and sell their own products
+- 🛒 Locally persisted shopping cart
+- 🔑 Authentication using Payload
+- 🖥️ Learn how to self-host Next.js
+- 🌟 Clean, modern UI using shadcn-ui
+- ✉️ Beautiful emails for signing up and after purchase
+- ✅ Admins can verify products to ensure high quality
+- ⌨️ 100% written in TypeScript
+- 🎁 ...much more
 
 ## Customizations
 
@@ -31,6 +43,10 @@ Things that are different from the original tutorial / source:
 
 See where i learned to built this web app:
 
-- [Build a Complete Digital Marketplace with Next.js 14, React, tRPC, Tailwind | Full Course 2023](https://www.youtube.com/watch?v=06g6YJ6JCJU) - watch and learn from one of the best youtuber ever
+- [Build a Complete Digital Marketplace with Next.js 14, React, tRPC, Tailwind | Full Course 2023](https://www.youtube.com/watch?v=06g6YJ6JCJU) - watch and learn from one of the best youtubers ever
 
-You can check out the magnificant channel as [Josh tried coding](https://www.youtube.com/@joshtriedcoding) -
+You can check out the magnificent channel at [Josh tried coding](https://www.youtube.com/@joshtriedcoding) -
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
