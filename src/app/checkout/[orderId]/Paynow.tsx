@@ -1,20 +1,21 @@
 'use client';
 
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
+import { useCart } from '@/hooks/use-cart';
 import { cn } from '@/lib/utils';
-import { trpc } from '@/trpc/client';
 import { Loader2 } from 'lucide-react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 export default function Paynow({ orderId, userId }: { orderId: string; userId: string }) {
 	let isLoading;
 
 	const router = useRouter();
+	const { clearCart } = useCart();
 
 	function handleClick() {
 		isLoading = true;
+		clearCart();
+
 		router.push(`/thank-you?orderId=${orderId}`);
 		router.refresh();
 	}
