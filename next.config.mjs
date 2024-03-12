@@ -3,13 +3,15 @@ const nextConfig = {
 	images: {
 		remotePatterns: [
 			{
-				hostname: 'localhost',
-				pathname: '**',
-				port: '3000',
 				protocol: 'http',
+				hostname: 'localhost',
+			},
+			{
+				protocol: 'https',
+				hostname: 'digitalhippo-1v7f.onrender.com/',
 			},
 		],
 	},
 };
 
-export default nextConfig;
+module.exports = nextConfig;
