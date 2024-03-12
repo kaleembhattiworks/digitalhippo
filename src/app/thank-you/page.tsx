@@ -5,11 +5,11 @@ import { getPayloadClient } from '@/get-payload';
 import { notFound, redirect } from 'next/navigation';
 import { Product, ProductFile, User } from '@/payload-types';
 import { PRODUCT_CATEGORIES } from '@/config';
-import { formatPrice, imageLoader } from '@/lib/utils';
+import { formatPrice } from '@/lib/utils';
 import Link from 'next/link';
 import PaymentStatus from '@/components/PaymentStatus';
 import { Loader2 } from 'lucide-react';
-// import PaymentStatus from '@/components/PaymentStatus';
+import { imageLoaderClient } from '@/lib/utilsClient';
 
 interface PageProps {
 	searchParams: {
@@ -109,7 +109,7 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
 														src={image.url}
 														alt={`${product.name} image`}
 														className="flex-none rounded-md bg-gray-100 object-cover object-center"
-														loader={imageLoader}
+														loader={imageLoaderClient}
 														loading="eager"
 													/>
 												) : null}
