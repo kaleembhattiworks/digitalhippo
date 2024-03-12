@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import type SwiperType from 'swiper';
 import { useEffect, useState } from 'react';
 import { Pagination } from 'swiper/modules';
-import { cn } from '@/lib/utils';
+import { cn, imageLoader } from '@/lib/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ImageSliderProps {
@@ -84,18 +84,19 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
 					console.log('TEST >>>>>>>>>>', url);
 					return (
 						<SwiperSlide key={i} className="-z-10 relative h-full w-full">
-							{/* <Image
-								fill
+							<Image
+								fill={true}
 								loading="eager"
 								className="-z-10 h-full w-full object-cover object-center"
 								src={url}
+								loader={imageLoader}
 								alt="Product image"
-							/> */}
-							<img
+							/>
+							{/* <img
 								src={url}
 								alt="Product Image"
 								className="-z-10 h-full w-full object-cover object-center"
-							/>
+							/> */}
 						</SwiperSlide>
 					);
 				})}
