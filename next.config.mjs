@@ -4,7 +4,7 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: 'kaleembhattiworks.com',
+				hostname: 'digitalhippo.kaleembhattiworks.com',
 				port: '',
 				pathname: '/media/**',
 			},
