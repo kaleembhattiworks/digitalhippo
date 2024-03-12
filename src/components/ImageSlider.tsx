@@ -84,12 +84,17 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
 					console.log('TEST >>>>>>>>>>', url);
 					return (
 						<SwiperSlide key={i} className="-z-10 relative h-full w-full">
-							<Image
+							{/* <Image
 								fill
 								loading="eager"
 								className="-z-10 h-full w-full object-cover object-center"
 								src={url}
 								alt="Product image"
+							/> */}
+							<img
+								src={url}
+								alt="Product Image"
+								className="-z-10 h-full w-full object-cover object-center"
 							/>
 						</SwiperSlide>
 					);
