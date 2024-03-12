@@ -92,11 +92,6 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
 								loader={imageLoader}
 								alt="Product image"
 							/>
-							{/* <img
-								src={url}
-								alt="Product Image"
-								className="-z-10 h-full w-full object-cover object-center"
-							/> */}
 						</SwiperSlide>
 					);
 				})}

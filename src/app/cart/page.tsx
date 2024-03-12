@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { PRODUCT_CATEGORIES } from '@/config';
 import { useCart } from '@/hooks/use-cart';
-import { cn, formatPrice } from '@/lib/utils';
+import { cn, formatPrice, imageLoader } from '@/lib/utils';
 import { trpc } from '@/trpc/client';
 import { Check, Loader2, X } from 'lucide-react';
 import Image from 'next/image';
@@ -88,6 +88,8 @@ const Page = () => {
 															src={image.url}
 															alt="product image"
 															className="h-full w-full rounded-md object-cover object-center sm:h-48 sm:w-48"
+															loader={imageLoader}
+															loading="eager"
 														/>
 													) : null}
 												</div>

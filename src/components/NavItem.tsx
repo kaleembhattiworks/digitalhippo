@@ -3,7 +3,7 @@
 import { PRODUCT_CATEGORIES } from '@/config';
 import { Button } from './ui/button';
 import { ChevronDown } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn, imageLoader } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -50,6 +50,8 @@ export default function NavItem({ category, handleOpen, isOpen, isAnyOpen }: Nav
 													alt="Product Category Image"
 													fill
 													className="object-cover object-center"
+													loader={imageLoader}
+													loading="lazy"
 												/>
 											</div>
 
