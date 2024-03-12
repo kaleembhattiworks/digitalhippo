@@ -1,4 +1,3 @@
-import { buttonVariants } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import Paynow from './Paynow';
@@ -41,7 +40,7 @@ export default async function Page({ params }: PageProps) {
 							</Link>
 						</p>
 						<Separator className="bg-blue-500 h-0.5" />
-						{user?.id && <Paynow orderId={orderId} userId={user?.id} />}
+						{user?.id && <Paynow orderId={orderId} />}
 					</div>
 				</div>
 			</div>

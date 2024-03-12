@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-export default function Paynow({ orderId, userId }: { orderId: string; userId: string }) {
+export default function Paynow({ orderId }: { orderId: string }) {
 	let isLoading;
 
 	const router = useRouter();
@@ -17,7 +17,6 @@ export default function Paynow({ orderId, userId }: { orderId: string; userId: s
 		clearCart();
 
 		router.push(`/thank-you?orderId=${orderId}`);
-		router.refresh();
 	}
 
 	return (
