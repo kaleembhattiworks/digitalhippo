@@ -5,6 +5,8 @@ import MaxWidthWrapper from './MaxWidthWrapper';
 import { Icons } from './Icons';
 import Link from 'next/link';
 
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
+
 const Footer = () => {
 	const pathname = usePathname();
 	const pathsToMinimize = ['/verify-email', '/sign-up', '/sign-in'];
@@ -58,15 +60,33 @@ const Footer = () => {
 
 					<div className="mt-4 flex items-center justify-center md:mt-0">
 						<div className="flex space-x-8">
-							<Link href="#" className="text-sm text-muted-foreground hover:text-gray-600">
-								Terms
-							</Link>
-							<Link href="#" className="text-sm text-muted-foreground hover:text-gray-600">
-								Privacy Policy
-							</Link>
-							<Link href="#" className="text-sm text-muted-foreground hover:text-gray-600">
-								Cookie Policy
-							</Link>
+							<HoverCard>
+								<HoverCardTrigger className="text-sm text-muted-foreground hover:text-gray-600">
+									Terms
+								</HoverCardTrigger>
+								<HoverCardContent>
+									There are no terms - this is a personal project, you&apos;re free to look at the{' '}
+									<Link href={`https://github.com/kaleembhattiworks`}>source</Link>
+								</HoverCardContent>
+							</HoverCard>
+							<HoverCard>
+								<HoverCardTrigger className="text-sm text-muted-foreground hover:text-gray-600">
+									Privacy Policy
+								</HoverCardTrigger>
+								<HoverCardContent>
+									There is no privacy policy - this is a personal project, you&apos;re free to look
+									at the <Link href={`https://github.com/kaleembhattiworks`}>source</Link>
+								</HoverCardContent>
+							</HoverCard>
+							<HoverCard>
+								<HoverCardTrigger className="text-sm text-muted-foreground hover:text-gray-600">
+									Cookie Policy
+								</HoverCardTrigger>
+								<HoverCardContent>
+									There is no cookie policy - this is a personal project, you&apos;re free to look
+									at the <Link href={`https://github.com/kaleembhattiworks`}>source</Link>
+								</HoverCardContent>
+							</HoverCard>
 						</div>
 					</div>
 				</div>
