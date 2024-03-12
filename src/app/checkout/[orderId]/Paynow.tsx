@@ -1,34 +1,23 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { useCart } from '@/hooks/use-cart';
-import { cn } from '@/lib/utils';
-import { Loader2 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Paynow({ orderId }: { orderId: string }) {
-	let isLoading;
-
-	const router = useRouter();
 	const { clearCart } = useCart();
 
 	function handleClick() {
-		isLoading = true;
 		clearCart();
-
-		router.push(`/thank-you?orderId=${orderId}`);
 	}
 
 	return (
-		<Button
-			className={cn('w-full', {
-				'pointer-events-none opacity-50': isLoading,
-			})}
+		<Link
 			onClick={handleClick}
-			size={'lg'}
+			href={`/thank-you?orderId=${orderId}`}
+			className={buttonVariants({ size: 'lg', className: 'w-full' })}
 		>
-			{isLoading ? <Loader2 className="w-4 h-4 animate-spin mr-1.5" /> : null}
-			{isLoading ? 'Paying' : 'Pay Now'}
-		</Button>
+			Pay Now
+		</Link>
 	);
 }
