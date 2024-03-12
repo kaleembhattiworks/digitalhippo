@@ -61,30 +61,47 @@ const Footer = () => {
 					<div className="mt-4 flex items-center justify-center md:mt-0">
 						<div className="flex space-x-8">
 							<HoverCard>
-								<HoverCardTrigger className="text-sm text-muted-foreground hover:text-gray-600">
+								<HoverCardTrigger className="text-sm text-muted-foreground hover:text-gray-600 cursor-pointer">
 									Terms
 								</HoverCardTrigger>
 								<HoverCardContent>
 									There are no terms - this is a personal project, you&apos;re free to look at the{' '}
-									<Link href={`https://github.com/kaleembhattiworks`}>source</Link>
+									<Link
+										href={`https://github.com/kaleembhattiworks`}
+										className="underline underline-offset-2 hover:underline"
+									>
+										source
+									</Link>
 								</HoverCardContent>
 							</HoverCard>
 							<HoverCard>
-								<HoverCardTrigger className="text-sm text-muted-foreground hover:text-gray-600">
+								<HoverCardTrigger className="text-sm text-muted-foreground hover:text-gray-600 cursor-pointer">
 									Privacy Policy
 								</HoverCardTrigger>
 								<HoverCardContent>
 									There is no privacy policy - this is a personal project, you&apos;re free to look
-									at the <Link href={`https://github.com/kaleembhattiworks`}>source</Link>
+									at the{' '}
+									<Link
+										href={`https://github.com/kaleembhattiworks`}
+										className="underline underline-offset-2 hover:underline"
+									>
+										source
+									</Link>
 								</HoverCardContent>
 							</HoverCard>
 							<HoverCard>
-								<HoverCardTrigger className="text-sm text-muted-foreground hover:text-gray-600">
+								<HoverCardTrigger className="text-sm text-muted-foreground hover:text-gray-600 cursor-pointer">
 									Cookie Policy
 								</HoverCardTrigger>
 								<HoverCardContent>
 									There is no cookie policy - this is a personal project, you&apos;re free to look
-									at the <Link href={`https://github.com/kaleembhattiworks`}>source</Link>
+									at the{' '}
+									<Link
+										href={`https://github.com/kaleembhattiworks`}
+										className="underline underline-offset-2 hover:underline"
+									>
+										source
+									</Link>
 								</HoverCardContent>
 							</HoverCard>
 						</div>
